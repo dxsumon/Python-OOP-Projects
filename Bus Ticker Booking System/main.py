@@ -1,3 +1,5 @@
+import time
+
 class Bus:
     def __init__(self,  number, route, total_seats):
         self.number = number
@@ -31,6 +33,7 @@ class Admin(Bus_System_class):
         super().__init__()
     def log_in(self, user_name, password):
         if user_name == self.user_name and password == self.password:
+            print("Login Scueessfull!")
             return True
         else:
             return False
@@ -83,6 +86,11 @@ def user_menu(admin):
             if user_choice == 1:
                 username = input("Enter username: ")
                 password = input("Enter password: ")
+                print("Loading", end="", flush=True)
+                for i in range(10):
+                    time.sleep(0.20)
+                    print(".", end="", flush=True)
+                print("")
                 if admin.log_in(username, password):
                     admin_menu(admin)
                 else:
